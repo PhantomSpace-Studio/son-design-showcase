@@ -1,6 +1,10 @@
 import { Award, Users, Calendar } from 'lucide-react';
+import { PortfolioModal } from './Modal';
+import { useState } from 'react';
+import AnimationObserver from './AnimationObserver';
 
 const About = () => {
+  const [isPortfolioModalOpen, setIsPortfolioModalOpen] = useState(false);
   const stats = [
     { icon: Award, label: 'Awards Won', value: '12+' },
     { icon: Users, label: 'Happy Clients', value: '150+' },
@@ -40,7 +44,10 @@ const About = () => {
             </div>
 
             <div className="mt-10">
-              <button className="btn-hero">
+              <button 
+                className="btn-hero shimmer"
+                onClick={() => setIsPortfolioModalOpen(true)}
+              >
                 Download Portfolio PDF
               </button>
             </div>
@@ -97,6 +104,11 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <PortfolioModal 
+        isOpen={isPortfolioModalOpen} 
+        onClose={() => setIsPortfolioModalOpen(false)} 
+      />
     </section>
   );
 };

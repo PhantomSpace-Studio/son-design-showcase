@@ -85,12 +85,23 @@ export default {
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)',
-				'large': 'var(--shadow-large)'
+				'large': 'var(--shadow-large)',
+				'glow': 'var(--shadow-glow)',
+				'inset': 'var(--shadow-inset)'
 			},
 			backgroundImage: {
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-gold': 'var(--gradient-gold)',
-				'gradient-fade': 'var(--gradient-fade)'
+				'gradient-fade': 'var(--gradient-fade)',
+				'gradient-texture': 'var(--gradient-texture)',
+				'gradient-metallic': 'var(--gradient-metallic)',
+				'gradient-charcoal-texture': 'var(--gradient-charcoal-texture)',
+				'texture-noise': 'var(--texture-noise)',
+				'texture-paper': 'var(--texture-paper)'
+			},
+			transitionTimingFunction: {
+				'elastic': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+				'dramatic': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
