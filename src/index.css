@@ -1,42 +1,74 @@
+@import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/500.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Son Designers - Elite Portfolio Design System */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --foreground: 0 0% 17%;
+    
+    /* Paper white and warm neutral */
+    --paper: 0 0% 100%;
+    --warm-neutral: 32 10% 96%;
+    
+    /* Brand palette */
+    --charcoal: 0 0% 17%;
+    --charcoal-foreground: 0 0% 100%;
+    
+    --gold: 35 25% 55%;
+    --gold-foreground: 0 0% 17%;
+    
+    --graphite: 240 6% 42%;
+    --graphite-foreground: 0 0% 100%;
+    
+    /* Design system tokens */
+    --primary: 0 0% 17%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 32 10% 96%;
+    --secondary-foreground: 0 0% 17%;
+    
+    --accent: 35 25% 55%;
+    --accent-foreground: 0 0% 17%;
+    
+    --muted: 32 10% 96%;
+    --muted-foreground: 240 6% 42%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 95%;
+    --ring: 35 25% 55%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--charcoal)), hsl(240 6% 25%));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)), hsl(45 30% 65%));
+    --gradient-fade: linear-gradient(180deg, hsl(var(--background)), hsl(var(--warm-neutral)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -8px hsl(var(--charcoal) / 0.1);
+    --shadow-medium: 0 8px 30px -12px hsl(var(--charcoal) / 0.15);
+    --shadow-large: 0 20px 50px -20px hsl(var(--charcoal) / 0.2);
+    
+    /* Spacing & layout */
+    --radius: 0.375rem;
+    --section-padding: 5rem;
+    --container-max: 1400px;
+    
+    /* Typography scale */
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +132,79 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  /* Elite button variants */
+  .btn-hero {
+    @apply bg-charcoal text-charcoal-foreground hover:bg-gradient-to-r hover:from-charcoal hover:to-graphite px-8 py-4 rounded-sm font-medium transition-all duration-300 shadow-soft hover:shadow-medium;
+  }
+  
+  .btn-gold {
+    @apply bg-accent text-accent-foreground hover:bg-gradient-to-r hover:from-accent hover:to-gold px-6 py-3 rounded-sm font-medium transition-all duration-300;
+  }
+  
+  .btn-ghost {
+    @apply text-charcoal hover:text-accent border border-border hover:border-accent px-6 py-3 rounded-sm font-medium transition-all duration-300;
+  }
+  
+  /* Project card hover effects */
+  .project-card {
+    @apply group relative overflow-hidden rounded-sm bg-background shadow-soft hover:shadow-large transition-all duration-500;
+  }
+  
+  .project-card-image {
+    @apply w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105;
+  }
+  
+  .project-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  /* Cinematic hero */
+  .hero-section {
+    @apply min-h-screen relative overflow-hidden;
+  }
+  
+  .hero-text {
+    @apply text-6xl md:text-8xl lg:text-9xl font-heading font-light tracking-tight;
+  }
+  
+  /* Portfolio grid */
+  .portfolio-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12;
+  }
+  
+  /* Smooth animations */
+  .fade-in {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@layer utilities {
+  .container-custom {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .section-padding {
+    padding: var(--section-padding) 0;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
   }
 }
