@@ -89,7 +89,7 @@ const Portfolio = () => {
         {/* Projects Grid */}
         <div className="portfolio-grid">
           {filteredProjects.map((project) => (
-            <article key={project.id} className="project-card">
+            <article key={project.id} className="project-card group">
               <div className="relative">
                 <img
                   src={project.image}

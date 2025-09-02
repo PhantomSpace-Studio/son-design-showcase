@@ -158,7 +158,7 @@
   
   /* Project card hover effects */
   .project-card {
-    @apply group relative overflow-hidden rounded-sm bg-background shadow-soft hover:shadow-large transition-all duration-500;
+    @apply relative overflow-hidden rounded-sm bg-background shadow-soft hover:shadow-large transition-all duration-500;
   }
   
   .project-card-image {
